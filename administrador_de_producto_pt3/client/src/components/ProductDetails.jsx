@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductDetails = () =>{
     const [product, setProduct] = useState({});
@@ -26,6 +27,7 @@ const ProductDetails = () =>{
             .delete(`http://localhost:8000/api/products/${id}`)
             .then((res) => {
                 console.log(res);
+                Swal.fire("Exito", "El producto fue eliminado", "success");
                 navigate("/");
             })
             .catch((err) => {
